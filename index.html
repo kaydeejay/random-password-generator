@@ -40,24 +40,24 @@
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
                     <label class="form-check-label" for="defaultCheck3">
-                      Numbers
+                      Numbers (123)
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
                     <label class="form-check-label" for="defaultCheck4">
-                      Special Characters
+                      Special Characters (%&#)
                     </label>
                   </div>
                 </div>
                 <div class="col-md-8">
-                  <input class="form-control align-middle" type="text" placeholder="" readonly>
+                  <input class="form-control align-middle" type="text" id="passField" placeholder="" readonly>
                 </div>
               </div>
             </form>
 
-            <button class="btn btn-primary" onclick="testFunction1()">Generate!</button>
-            <button class="btn btn-primary" onclick="testFunction2()">Copy to Clipboard</button>
+            <button class="btn btn-primary" onclick="chooseParams()">Generate!</button>
+            <button class="btn btn-primary" onclick="copyPassword()">Copy to Clipboard</button>
         </div>
       </div>
     </div>
