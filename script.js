@@ -27,6 +27,9 @@ function buildPassword(arr) {
 }
 
 function chooseParams(){
+    //clear existing error message, if any
+    document.getElementById("warning1").innerHTML = "";
+    document.getElementById("warning2").innerHTML = "";
     //create an empty array to contain chosen character types
     var chosenParams = [];
     //loop through the checkbox buttons
@@ -41,9 +44,40 @@ function chooseParams(){
     buildPassword(chosenParams);
 }
 
+//validate user inputs
+function validateParams(){
+    //in order to run chooseParams(), numValid must be true and checksValidCount must be > 0
+    numValid = false;
+    checksValidCount = 0;
+    //loop through the checkboxes
+    for (i=1; i<=4; i++) {
+        //increment checksValidCount for each true result
+        if (document.querySelector("#defaultCheck"+i).checked === true) {
+            checksValidCount++;
+        }
+    }
+    //if user input number is between 8 and 160, numValid is set to true
+    if (parseInt(document.getElementById("formGroupExampleInput").value) > 7 &&
+        parseInt(document.getElementById("formGroupExampleInput").value) < 161) {
+            numValid = true;
+    }
+    //display warning message for invalid number
+    if (numValid === false) {
+        document.getElementById("warning1").innerHTML = "Not a valid number"
+    }
+    //display warning message for 0 checkbox selections
+    if (checksValidCount < 1) {
+        document.getElementById("warning2").innerHTML = "Please check at least one character type"
+    }
+    //if all valid, run password generator
+    if (numValid === true && checksValidCount > 0) {
+        chooseParams();
+    }
+}
+
 function copyPassword(){
     var givenText = document.getElementById("passField");
     givenText.select();
-    givenText.setSelectionRange(0, 161);
+    givenText.setSelectionRange(0, 160);
     document.execCommand("copy");
 }
